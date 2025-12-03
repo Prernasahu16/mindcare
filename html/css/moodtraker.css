@@ -1,0 +1,840 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --primary: #4a6fa5;
+    --secondary: #6b8cbc;
+    --accent: #ff9a76;
+    --light: #f8f9fa;
+    --dark: #2c3e50;
+    --success: #5cb85c;
+    --danger: #e74c3c;
+    --warning: #f39c12;
+}
+
+body {
+    background-color: #f0f5ff;
+    color: var(--dark);
+    overflow-x: hidden;
+}
+
+/* Header & Navigation */
+header {
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.logo i {
+    color: var(--accent);
+    animation: pulse 2s infinite;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--accent);
+    transition: width 0.3s;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.profile-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.profile-icon:hover {
+    background-color: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 154, 118, 0.4);
+}
+
+/* Page Header */
+.page-header {
+    margin-top: 100px;
+    padding: 3rem 5%;
+    text-align: center;
+    background: linear-gradient(rgba(74, 111, 165, 0.8), rgba(107, 140, 188, 0.8));
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+.page-header h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.page-header p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Main Content */
+.mood-tracker-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 5%;
+}
+
+/* Daily Mood Entry Section */
+.daily-mood-section {
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.section-title {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.section-title h2 {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.section-title p {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+/* Mood Slider */
+.mood-slider-container {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.mood-emoji {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.mood-value {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+
+.mood-slider {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    height: 20px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: linear-gradient(to right, #e74c3c, #f39c12, #2ecc71);
+    border-radius: 10px;
+    outline: none;
+}
+
+.mood-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: white;
+    border: 3px solid var(--primary);
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.mood-labels {
+    display: flex;
+    justify-content: space-between;
+    max-width: 500px;
+    margin: 0.5rem auto 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Mood Emoji Cards */
+.mood-emoji-cards {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.mood-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem 1rem;
+    border-radius: 15px;
+    background: #f8f9fa;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    min-width: 100px;
+}
+
+.mood-card.active {
+    border-color: var(--primary);
+    background: white;
+    box-shadow: 0 5px 15px rgba(74, 111, 165, 0.2);
+    transform: translateY(-5px);
+}
+
+.mood-card-emoji {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.mood-card-label {
+    font-weight: 600;
+    color: var(--dark);
+}
+
+/* Mood Reason Tags */
+.mood-reasons {
+    margin-bottom: 2rem;
+}
+
+.mood-reasons h3 {
+    margin-bottom: 1rem;
+    text-align: center;
+    color: var(--dark);
+}
+
+.reason-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    justify-content: center;
+}
+
+.reason-tag {
+    padding: 0.7rem 1.2rem;
+    background: #f1f3f4;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    border: 1px solid transparent;
+}
+
+.reason-tag.active {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px rgba(74, 111, 165, 0.3);
+}
+
+/* Notes Section */
+.mood-notes {
+    margin-bottom: 2rem;
+}
+
+.mood-notes h3 {
+    margin-bottom: 1rem;
+    text-align: center;
+    color: var(--dark);
+}
+
+.notes-textarea {
+    width: 100%;
+    height: 120px;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 1rem;
+    resize: vertical;
+    transition: border 0.3s;
+}
+
+.notes-textarea:focus {
+    border-color: var(--primary);
+    outline: none;
+}
+
+/* Submit Button */
+.submit-container {
+    text-align: center;
+}
+
+.submit-btn {
+    padding: 1rem 2.5rem;
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(74, 111, 165, 0.3);
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(74, 111, 165, 0.4);
+}
+
+.submit-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Mood Summary */
+.mood-summary {
+    background: #e8f4ff;
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    text-align: center;
+    display: none;
+}
+
+.mood-summary h3 {
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+
+.summary-content {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Suggested Activities */
+.suggested-activities {
+    margin-top: 2rem;
+}
+
+.suggested-activities h3 {
+    margin-bottom: 1rem;
+    color: var(--dark);
+    text-align: center;
+}
+
+.activity-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.activity-card {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border-left: 4px solid var(--accent);
+}
+
+.activity-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.activity-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+
+.activity-title {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--dark);
+}
+
+.activity-desc {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Mood History Section */
+.mood-history-section {
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Mood Chart */
+.mood-chart-container {
+    margin-bottom: 2rem;
+}
+
+.chart-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.chart-btn {
+    padding: 0.7rem 1.5rem;
+    background: #f1f3f4;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.chart-btn.active {
+    background: var(--primary);
+    color: white;
+}
+
+.chart-container {
+    height: 300px;
+    position: relative;
+}
+
+/* Mood Calendar */
+.mood-calendar {
+    margin-bottom: 2rem;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.calendar-nav {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: var(--primary);
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.calendar-day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.calendar-day.header {
+    background: none;
+    font-weight: 600;
+    color: var(--dark);
+    cursor: default;
+}
+
+.calendar-day.empty {
+    background: none;
+    cursor: default;
+}
+
+.mood-1 { background: #ff6b6b; color: white; }
+.mood-2 { background: #ff9e7b; color: white; }
+.mood-3 { background: #ffd166; }
+.mood-4 { background: #c8e6a1; }
+.mood-5 { background: #8acb88; color: white; }
+.mood-6 { background: #6bcf7f; color: white; }
+.mood-7 { background: #4ea772; color: white; }
+.mood-8 { background: #3d8b5f; color: white; }
+.mood-9 { background: #2e6f4f; color: white; }
+.mood-10 { background: #1e5530; color: white; }
+
+/* Mood Heatmap */
+.mood-heatmap {
+    margin-bottom: 2rem;
+}
+
+.heatmap-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.heatmap-week {
+    display: flex;
+    gap: 5px;
+}
+
+.heatmap-day {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+}
+
+.heatmap-legend {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 1rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.8rem;
+}
+
+.legend-color {
+    width: 15px;
+    height: 15px;
+    border-radius: 3px;
+}
+
+/* Weekly Analysis */
+.weekly-analysis {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.analysis-title {
+    margin-bottom: 1rem;
+    color: var(--primary);
+    text-align: center;
+}
+
+.analysis-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.analysis-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.analysis-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.analysis-label {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Streaks & Achievements */
+.streaks-section {
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.streaks-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.streak-card {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    text-align: center;
+    min-width: 150px;
+    box-shadow: 0 5px 15px rgba(74, 111, 165, 0.3);
+}
+
+.streak-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.streak-label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.achievements {
+    margin-top: 2rem;
+}
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.achievement-card {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.achievement-card.earned {
+    background: linear-gradient(135deg, #ffd166, #ff9a76);
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(255, 154, 118, 0.3);
+}
+
+.achievement-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.achievement-title {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.achievement-desc {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark);
+    color: white;
+    padding: 4rem 5% 2rem;
+    margin-top: 3rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-column h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-column h3::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 3px;
+    background-color: var(--accent);
+    bottom: 0;
+    left: 0;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+    color: #bbb;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--accent);
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: white;
+    transition: all 0.3s;
+}
+
+.social-links a:hover {
+    background-color: var(--accent);
+    transform: translateY(-3px);
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+/* Animations */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .nav-links {
+        margin: 1.5rem 0;
+        gap: 1.5rem;
+    }
+
+    .page-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .page-header p {
+        font-size: 1.1rem;
+    }
+
+    .mood-emoji-cards {
+        gap: 0.5rem;
+    }
+
+    .mood-card {
+        min-width: 80px;
+        padding: 1rem 0.5rem;
+    }
+
+    .reason-tags {
+        gap: 0.5rem;
+    }
+
+    .reason-tag {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+
+    .activity-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .streaks-container {
+        gap: 1rem;
+    }
+
+    .streak-card {
+        min-width: 120px;
+        padding: 1rem;
+    }
+
+    .achievements-grid {
+        grid-template-columns: 1fr;
+    }
+}

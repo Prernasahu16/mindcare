@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindCare - Self Help Tools</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+     <link rel="stylesheet" href="css/self-help.css">
+      <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <i class="fas fa-brain"></i>
+                MindCare
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="selfhelp.html" class="active">Self-Help Tools</a>
+                <a href="moodtraker.html" class="">Mood Tracker</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="auth-buttons">
+                <div class="profile-icon" onclick="window.location.href='profile.html'">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Self-Help Tools</h1>
+        <p>Explore our collection of interactive tools designed to support your mental wellness journey. All tools work directly in your browser with no redirects.</p>
+    </section>
+
+    <!-- Tools Section -->
+    <section class="tools-section">
+        <div class="section-title">
+            <h2>Wellness Tools</h2>
+            <p>Our comprehensive collection of mental health tools to help you manage stress, anxiety, and improve your overall wellbeing</p>
+        </div>
+
+        <div class="tools-grid">
+            <!-- Breathing Exercise -->
+            <div class="tool-card" data-tool="breathing">
+                <div class="tool-header">
+                    <div class="tool-icon">
+                        <i class="fas fa-wind"></i>
+                    </div>
+                    <div class="tool-title">Breathing Exercise</div>
+                </div>
+                <div class="tool-body">
+                    <p class="tool-description">Calm your nervous system with guided 4-7-8 breathing technique. Follow the visual guide to regulate your breath.</p>
+                    <button class="start-btn">Start Exercise</button>
+                </div>
+            </div>
+
+            <!-- Grounding Exercise -->
+            <div class="tool-card" data-tool="grounding">
+                <div class="tool-header">
+                    <div class="tool-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <div class="tool-title">5-4-3-2-1 Grounding</div>
+                </div>
+                <div class="tool-body">
+                    <p class="tool-description">A sensory exercise to help you stay present during moments of anxiety or stress.</p>
+                    <button class="start-btn">Start Exercise</button>
+                </div>
+            </div>
+
+            <!-- Thought Reframing -->
+            <div class="tool-card" data-tool="thoughts">
+                <div class="tool-header">
+                    <div class="tool-icon">
+                        <i class="fas fa-comment-dots"></i>
+                    </div>
+                    <div class="tool-title">Thought Reframing</div>
+                </div>
+                <div class="tool-body">
+                    <p class="tool-description">Challenge negative thoughts and find more balanced perspectives with this CBT-based tool.</p>
+                    <button class="start-btn">Start Exercise</button>
+                </div>
+            </div>
+
+            <!-- Gratitude Journal -->
+            <div class="tool-card" data-tool="gratitude">
+                <div class="tool-header">
+                    <div class="tool-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="tool-title">Gratitude Journal</div>
+                </div>
+                <div class="tool-body">
+                    <p class="tool-description">Cultivate positivity by reflecting on things you're grateful for. Save your entries locally.</p>
+                    <button class="start-btn">Start Exercise</button>
+                </div>
+            </div>
+
+            <!-- Mood Tracker -->
+            <div class="tool-card" data-tool="mood">
+                <div class="tool-header">
+                    <div class="tool-icon">
+                        <i class="fas fa-smile"></i>
+                    </div>
+                    <div class="tool-title">Mood Tracker</div>
+                </div>
+                <div class="tool-body">
+                    <p class="tool-description">Track your emotional patterns over time and identify triggers and positive influences.</p>
+                    <button class="start-btn">Start Exercise</button>
+                </div>
+            </div>
+
+            <!-- Progressive Relaxation -->
+            <div class="tool-card" data-tool="relaxation">
+                <div class="tool-header">
+                    <div class="tool-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <div class="tool-title">Body Relaxation</div>
+                </div>
+                <div class="tool-body">
+                    <p class="tool-description">Release physical tension through progressive muscle relaxation techniques.</p>
+                    <button class="start-btn">Start Exercise</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Emergency Section -->
+        <div class="emergency-section">
+            <h2>Need Immediate Help?</h2>
+            <p>If you're experiencing a mental health crisis or having thoughts of harming yourself, please reach out to these resources immediately.</p>
+            <div class="emergency-buttons">
+                <button class="emergency-btn">Crisis Hotline: 1-800-273-8255</button>
+                <button class="emergency-btn">Crisis Text Line: Text HOME to 741741</button>
+                <button class="emergency-btn">Find Local Help</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Breathing Exercise Modal -->
+    <div class="modal" id="breathing-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Breathing Exercise</div>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="breathing-container">
+                    <div class="breathing-circle">
+                        <div class="breathing-text" id="breathing-text">Ready</div>
+                        <div class="breathing-timer" id="breathing-timer">0</div>
+                    </div>
+                    <div class="breathing-instruction" id="breathing-instruction">
+                        Click Start to begin the breathing exercise
+                    </div>
+                    <div class="breathing-counter">
+                        Cycle: <span id="cycle-count">0</span>/4
+                    </div>
+                    <div class="breathing-controls">
+                        <button class="control-btn" id="start-breathing">Start</button>
+                        <button class="control-btn" id="pause-breathing">Pause</button>
+                        <button class="control-btn" id="reset-breathing">Reset</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Grounding Exercise Modal -->
+    <div class="modal" id="grounding-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">5-4-3-2-1 Grounding Exercise</div>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="grounding-container">
+                    <div class="grounding-step active" id="step-1">
+                        <h3>5 Things You Can See</h3>
+                        <p>Look around and name five things you can see.</p>
+                        <div class="grounding-inputs">
+                            <input type="text" placeholder="Thing 1">
+                            <input type="text" placeholder="Thing 2">
+                            <input type="text" placeholder="Thing 3">
+                            <input type="text" placeholder="Thing 4">
+                            <input type="text" placeholder="Thing 5">
+                        </div>
+                    </div>
+                    
+                    <div class="grounding-step" id="step-2">
+                        <h3>4 Things You Can Touch</h3>
+                        <p>Notice four things you can feel.</p>
+                        <div class="grounding-inputs">
+                            <input type="text" placeholder="Thing 1">
+                            <input type="text" placeholder="Thing 2">
+                            <input type="text" placeholder="Thing 3">
+                            <input type="text" placeholder="Thing 4">
+                        </div>
+                    </div>
+                    
+                    <div class="grounding-step" id="step-3">
+                        <h3>3 Things You Can Hear</h3>
+                        <p>Listen carefully and identify three sounds.</p>
+                        <div class="grounding-inputs">
+                            <input type="text" placeholder="Sound 1">
+                            <input type="text" placeholder="Sound 2">
+                            <input type="text" placeholder="Sound 3">
+                        </div>
+                    </div>
+                    
+                    <div class="grounding-step" id="step-4">
+                        <h3>2 Things You Can Smell</h3>
+                        <p>Notice two things you can smell.</p>
+                        <div class="grounding-inputs">
+                            <input type="text" placeholder="Smell 1">
+                            <input type="text" placeholder="Smell 2">
+                        </div>
+                    </div>
+                    
+                    <div class="grounding-step" id="step-5">
+                        <h3>1 Thing You Can Taste</h3>
+                        <p>Focus on one thing you can taste.</p>
+                        <div class="grounding-inputs">
+                            <input type="text" placeholder="Taste">
+                        </div>
+                    </div>
+                    
+                    <div class="grounding-navigation">
+                        <button class="control-btn nav-btn" id="prev-btn">Previous</button>
+                        <button class="control-btn nav-btn" id="next-btn">Next</button>
+                        <button class="control-btn nav-btn" id="finish-btn">Finish</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Thought Reframing Modal -->
+    <div class="modal" id="thoughts-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Thought Reframing</div>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="thoughts-container">
+                    <div class="thought-step active" id="thought-step-1">
+                        <h3>Identify the Thought</h3>
+                        <p>What negative thought is bothering you?</p>
+                        <textarea id="negative-thought" placeholder="I'm not good enough..."></textarea>
+                    </div>
+                    
+                    <div class="thought-step" id="thought-step-2">
+                        <h3>Challenge the Thought</h3>
+                        <p>What evidence contradicts this thought?</p>
+                        <textarea id="challenge-thought" placeholder="Times when I have succeeded..."></textarea>
+                    </div>
+                    
+                    <div class="thought-step" id="thought-step-3">
+                        <h3>Find a Balanced Perspective</h3>
+                        <p>What's a more realistic, helpful way to view this?</p>
+                        <textarea id="balanced-thought" placeholder="I have strengths and areas to grow, like everyone..."></textarea>
+                    </div>
+                    
+                    <div class="thought-step" id="thought-step-4">
+                        <h3>Review Your Reframed Thought</h3>
+                        <div class="thought-comparison">
+                            <div class="original-thought">
+                                <h4>Original Thought:</h4>
+                                <p id="original-display"></p>
+                            </div>
+                            <div class="reframed-thought">
+                                <h4>Reframed Thought:</h4>
+                                <p id="reframed-display"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="thoughts-navigation">
+                    <button class="control-btn nav-btn" id="thought-prev">Previous</button>
+                    <button class="control-btn nav-btn" id="thought-next">Next</button>
+                    <button class="control-btn nav-btn" id="thought-finish">Finish</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gratitude Journal Modal -->
+    <div class="modal" id="gratitude-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Gratitude Journal</div>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="gratitude-container">
+                    <div class="gratitude-prompt">
+                        <h3>What are you grateful for today?</h3>
+                        <div class="gratitude-categories">
+                            <div class="category active" data-category="people">People</div>
+                            <div class="category" data-category="experiences">Experiences</div>
+                            <div class="category" data-category="things">Things</div>
+                            <div class="category" data-category="qualities">Personal Qualities</div>
+                        </div>
+                        <textarea id="gratitude-text" placeholder="I'm grateful for..."></textarea>
+                    </div>
+                    
+                    <div class="gratitude-actions">
+                        <button class="action-btn" id="save-gratitude">Save Entry</button>
+                        <button class="action-btn" id="clear-gratitude">Clear</button>
+                    </div>
+                    
+                    <div class="gratitude-streak">
+                        <div class="streak-counter">
+                            <span id="streak-count">0</span> day streak
+                        </div>
+                        <button class="action-btn" id="view-history">View History</button>
+                    </div>
+                    
+                    <div class="previous-entries">
+                        <h3>Recent Entries</h3>
+                        <div id="entries-list"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mood Tracker Modal -->
+    <div class="modal" id="mood-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Mood Tracker</div>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="mood-container">
+                    <div class="mood-options">
+                        <div class="mood-option" data-mood="happy">
+                            <div class="mood-icon">😊</div>
+                            <div class="mood-name">Happy</div>
+                        </div>
+                        <div class="mood-option" data-mood="calm">
+                            <div class="mood-icon">😌</div>
+                            <div class="mood-name">Calm</div>
+                        </div>
+                        <div class="mood-option" data-mood="neutral">
+                            <div class="mood-icon">😐</div>
+                            <div class="mood-name">Neutral</div>
+                        </div>
+                        <div class="mood-option" data-mood="anxious">
+                            <div class="mood-icon">😰</div>
+                            <div class="mood-name">Anxious</div>
+                        </div>
+                        <div class="mood-option" data-mood="sad">
+                            <div class="mood-icon">😔</div>
+                            <div class="mood-name">Sad</div>
+                        </div>
+                    </div>
+                    
+                    <div class="mood-intensity">
+                        <h3>Intensity: <span id="intensity-value">5</span>/10</h3>
+                        <input type="range" min="1" max="10" value="5" class="intensity-slider" id="mood-intensity">
+                    </div>
+                    
+                    <textarea class="mood-notes" id="mood-notes" placeholder="Add notes about your mood (optional)..."></textarea>
+                    
+                    <button class="control-btn" id="save-mood">Save Mood Entry</button>
+                    
+                    <div class="mood-history">
+                        <h3>Your Mood History</h3>
+                        <div class="mood-chart" id="mood-chart">
+                            <!-- Mood bars will be generated here -->
+                        </div>
+                        <div id="mood-history-list"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Body Relaxation Modal -->
+    <div class="modal" id="relaxation-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Progressive Muscle Relaxation</div>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="relaxation-container">
+                    <div class="body-visual">
+                        <div class="body-part active" id="feet">Feet</div>
+                        <div class="body-part" id="calves">Calves</div>
+                        <div class="body-part" id="thighs">Thighs</div>
+                        <div class="body-part" id="glutes">Glutes</div>
+                        <div class="body-part" id="abdomen">Abdomen</div>
+                        <div class="body-part" id="chest">Chest</div>
+                        <div class="body-part" id="hands">Hands</div>
+                        <div class="body-part" id="arms">Arms</div>
+                        <div class="body-part" id="shoulders">Shoulders</div>
+                        <div class="body-part" id="neck">Neck</div>
+                        <div class="body-part" id="face">Face</div>
+                    </div>
+                    
+                    <div class="instructions">
+                        <h3 id="current-part">Starting with feet</h3>
+                        <p id="relax-instruction">Tense your feet muscles for 5 seconds, then release</p>
+                        <div class="tense-timer">
+                            <div class="timer-bar">
+                                <div class="timer-progress" id="timer-progress"></div>
+                            </div>
+                            <div class="timer-text" id="tense-timer">5</div>
+                        </div>
+                    </div>
+                    
+                    <div class="relaxation-controls">
+                        <button class="control-btn" id="start-relaxation">Begin</button>
+                        <button class="control-btn" id="pause-relaxation">Pause</button>
+                        <button class="control-btn" id="reset-relaxation">Reset</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>MindCare</h3>
+                <p>Providing compassionate mental health support and resources to help you on your wellness journey.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="self-help-tools.html">Self-Help Tools</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Online Counseling</a></li>
+                    <li><a href="#">Support Groups</a></li>
+                    <li><a href="#">Crisis Resources</a></li>
+                    <li><a href="self-help-tools.html">Self-Help Tools</a></li>
+                    <li><a href="#">Mental Health Assessments</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Wellness Street, City</li>
+                    <li><i class="fas fa-phone"></i> (555) 123-4567</li>
+                    <li><i class="fas fa-envelope"></i> support@mindcare.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 MindCare Mental Health Support System. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/self-help.js"> </script>
+    <script type="module" src="js/script.js"></script>
+</body>
+</html>
